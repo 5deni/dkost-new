@@ -3,7 +3,7 @@ import { FaUser, FaLock, FaCamera, FaArrowRight } from 'react-icons/fa';
 
 const Pengaturan = ({ setActivePage }) => {
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);// Tambahkan state ini
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUserData();
@@ -117,8 +117,8 @@ const Pengaturan = ({ setActivePage }) => {
         className="bg-gradient-to-br from-white to-green-50 p-6 rounded-2xl shadow-lg hover:shadow-xl border border-gray-200 cursor-pointer transition-all group"
       >
         <div className="flex items-center justify-between mb-4">
-          <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
-            <FaUser className="text-gray-600 text-xl" />
+          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+            <FaUser className="text-blue-600 text-xl" />
           </div>
           <FaArrowRight className="text-gray-400 group-hover:text-green-600 transition-colors" />
         </div>

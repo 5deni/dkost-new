@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../components/Home/HeaderHome';
+import HeaderUser from '../components/Dashboard/User/HeaderUser';
 import SideMenu from '../components/Dashboard/User/SideMenu';
 import KamarSaya from '../components/Dashboard/User/KamarSaya';
 import RiwayatTransaksi from '../components/Dashboard/User/RiwayatTransaksi/RiwayatTransaksi';
@@ -34,18 +34,22 @@ const PageDashboardUser = () => {
 
 
   return (
-    <div>
-      <Header/>
-        <div className="flex h-screen">
-          <div className='bg-white shadow '>
-            <SideMenu setActivePage={setActivePage} activePage={activePage}/>
-          </div>
-          <div className='flex-1 p-6 overflow-y-auto'>
-              <div className='w-full'>{renderContent()}</div>
+    <div className="min-h-screen bg-gray-50">
+      <HeaderUser />
+      <div className="flex pt-20">
+        {/* Sidebar */}
+        <div className="bg-white shadow h-[calc(100vh-80px)]">
+          <SideMenu setActivePage={setActivePage} activePage={activePage} />
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="flex-1 overflow-y-auto p-6">
+            {renderContent()}
           </div>
         </div>
+      </div>
     </div>
-      
   );
 };
 

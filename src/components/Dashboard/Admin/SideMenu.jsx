@@ -5,12 +5,14 @@ import {
   FaUsers,
   FaCog,
   FaMoneyBillWave,
+  FaHome,
 } from 'react-icons/fa';
 
 const menuItems = [
-  { name: 'KelolaPembayaran', icon: <FaMoneyBillWave />, label: 'Dashboard' },
-  { name: 'KelolaKamardanIklan', icon: <FaBed />, label: 'Kelola Kamar' },
-  { name: 'KelolaPenghuni', icon: <FaUsers />, label: 'Manajemen Penghuni' },
+  { name: 'DashboardSummary', icon: <FaHome />, label: 'Dashboard' },
+  { name: 'KelolaPembayaran', icon: <FaMoneyBillWave />, label: 'Pembayaran' },
+  { name: 'KelolaKamardanIklan', icon: <FaBed />, label: 'Kamar' },
+  { name: 'KelolaPenghuni', icon: <FaUsers />, label: 'Penghuni' },
   { name: 'Pengaturan', icon: <FaCog />, label: 'Akun Saya' },
 ];
 
@@ -83,7 +85,7 @@ const SideMenu = ({ setActivePage, activePage }) => {
   return (
     <aside className="w-80 bg-[#F5F5F5] border-r p-6 overflow-y-auto h-full">
       <div className="flex items-center gap-3 mb-10">
-        <FaUserCircle className="text-4xl text-[#444]" />
+        <FaUser className="text-4xl text-[#444]" />
         <div>
           <p className="font-semibold text-xl text-gray-700">
             {adminProfile?.name}

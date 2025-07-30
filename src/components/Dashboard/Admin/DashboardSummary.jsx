@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import BangunanKost from '../../../assets/LandingPage/BangunanKost.svg';
 
-const AdminDashboardSummary = () => {
+const DashboardSummary = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -137,4 +137,4 @@ const AdminDashboardSummary = () => {
   );
 };
 
-export default AdminDashboardSummary;
+export default DashboardSummary;

@@ -3,7 +3,7 @@ import logo from '../../../assets/Header/DkostMranggenGreen.svg';
 import { FaUserCircle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const HeaderAdmin = () => {
+const HeaderUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
@@ -43,20 +43,20 @@ const HeaderAdmin = () => {
         <div className="flex-1 flex items-center justify-between px-6">
           {/* Centered Title */}
           <div className="flex-1 text-center">
-            <h1 className="text-xl font-bold text-gray-800">Admin Dashboard</h1>
+            <h1 className="text-xl font-bold text-gray-800">Dashboard Penghuni</h1>
             <p className="text-sm text-gray-500">Kelola kost Anda</p>
           </div>
 
           {/* Profile Dropdown */}
           <div className="relative" ref={dropdownRef}>
             <button 
-              className="flex items-center gap-2 px-4 py-2 bg-green-50 hover:bg-green-100 rounded-lg transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
               onClick={() => setDropdownOpen(!dropdownOpen)}
             >
-              <FaUserCircle className="text-2xl text-green-600" />
+              <FaUserCircle className="text-2xl text-blue-600" />
               <div className="text-left hidden md:block">
-                <p className="text-sm font-medium text-gray-800">Admin</p>
-                <p className="text-xs text-gray-500">Administrator</p>
+                <p className="text-sm font-medium text-gray-800">Penghuni</p>
+                <p className="text-xs text-gray-500">Pengguna Kost</p>
               </div>
             </button>
             
@@ -84,4 +84,4 @@ const HeaderAdmin = () => {
   );
 };
 
-export default HeaderAdmin;
+export default HeaderUser;

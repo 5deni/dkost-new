@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaLock, FaEnvelope, FaCamera, FaArrowRight, FaShieldAlt } from 'react-icons/fa';
+import { FaUser, FaLock, FaCamera, FaArrowRight } from 'react-icons/fa';
 
 const Pengaturan = ({ setActivePage }) => {
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);// Tambahkan state ini
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUserData();
@@ -12,7 +12,7 @@ const Pengaturan = ({ setActivePage }) => {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem('token');
-              const response = await fetch('http://localhost:5000/api/admin/profile', {
+              const response = await fetch('http://localhost:5000/api/user/profile', {
           headers: { Authorization: `Bearer ${token}` },
         });
       const data = await response.json();
@@ -22,11 +22,11 @@ const Pengaturan = ({ setActivePage }) => {
       } else {
         // Fallback data
         setUserData({
-          name: 'Admin DKost',
-          email: 'admin@dkost.com',
+          name: 'User',
+          email: 'user@dkost.com',
           phoneNumber: '081234567890',
           profilePicture: null,
-          role: 'admin',
+          role: 'user',
           createdAt: '2024-01-01'
         });
       }
@@ -34,11 +34,11 @@ const Pengaturan = ({ setActivePage }) => {
       console.error('Error fetching user data:', error);
       // Fallback data jika terjadi error
       setUserData({
-        name: 'Admin DKost',
-        email: 'admin@dkost.com',
+        name: 'User',
+        email: 'user@dkost.com',
         phoneNumber: '081234567890',
         profilePicture: null,
-        role: 'admin',
+        role: 'user',
         createdAt: '2024-01-01'
       });
     } finally {
@@ -71,7 +71,7 @@ const Pengaturan = ({ setActivePage }) => {
     {/* Profile Overview */}
     <div className="flex items-center gap-6">
       <div className="relative">
-        <div className="w-20 h-20 bg-gradient-to-r from-green-600 to-emerald-700 rounded-full flex items-center justify-center text-white text-2xl font-semibold shadow-lg">
+        <div className="w-20 h-20 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-2xl font-semibold shadow-lg">
           {userData?.profilePicture ? (
             <img 
               src={userData.profilePicture} 
@@ -82,15 +82,12 @@ const Pengaturan = ({ setActivePage }) => {
             userData?.name?.charAt(0).toUpperCase() || 'A'
           )}
         </div>
-        <div className="absolute -bottom-1 -right-1 bg-blue-600 text-white p-1.5 rounded-full shadow">
-          <FaCamera className="text-xs" />
-        </div>
       </div>
       <div className="flex-1">
-        <h3 className="text-xl font-bold text-green-800">{userData?.name}</h3>
+        <h3 className="text-xl font-bold text-green-600">{userData?.name}</h3>
         <p className="text-gray-600">{userData?.email}</p>
         <p className="text-sm text-gray-500 mt-1">
-          {userData?.role === 'admin' ? 'Administrator' : 'User'} • Bergabung sejak {new Date(userData?.createdAt).toLocaleDateString('id-ID')}
+          {userData?.role === 'user' ? 'User' : 'User'} • Bergabung sejak {new Date(userData?.createdAt).toLocaleDateString('id-ID')}
         </p>
       </div>
     </div>
@@ -111,10 +108,21 @@ const Pengaturan = ({ setActivePage }) => {
         <p className="text-gray-600 text-sm">
           Perbarui password akun Anda untuk keamanan yang lebih baik
         </p>
-        <div className="mt-4 flex items-center text-sm text-gray-500">
-          <FaShieldAlt className="mr-2" />
-          <span>Terakhir diperbarui: 30 hari yang lalu</span>
+      </div>
+      <div 
+        onClick={() => handleMenuClick('GantiUsername')}
+        className="bg-gradient-to-br from-white to-green-50 p-6 rounded-2xl shadow-lg hover:shadow-xl border border-gray-200 cursor-pointer transition-all group"
+      >
+        <div className="flex items-center justify-between mb-4">
+          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+            <FaUser className="text-blue-600 text-xl" />
+          </div>
+          <FaArrowRight className="text-gray-400 group-hover:text-green-600 transition-colors" />
         </div>
+        <h3 className="text-lg font-semibold text-gray-800 mb-2">Ganti Username</h3>
+        <p className="text-gray-600 text-sm">
+          Perbarui username akun Anda sesuai kemauan
+        </p>
       </div>
     </div>
   </div>

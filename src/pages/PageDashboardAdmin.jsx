@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import HeaderAdmin from '../components/Dashboard/Admin/HeaderAdmin';
-import AdminDashboardSummary from '../components/Dashboard/Admin/AdminDashboardSummary';
+import DashboardSummary from '../components/Dashboard/Admin/DashboardSummary';
 import SideMenu from '../components/Dashboard/Admin/SideMenu';
 import KelolaPembayaran from '../components/Dashboard/Admin/KelolaPembayaran';
 import KelolaKamardanIklan from '../components/Dashboard/Admin/KelolaKamardanIklan/KelolaKamardanIklan';
@@ -9,15 +9,16 @@ import Pengaturan from '../components/Dashboard/Admin/Pengaturan/Pengaturan';
 import DetailPenghuni from '../components/Dashboard/Admin/KelolaPenghuni/DetailPenghuni';
 import GantiPassword from '../components/Dashboard/Admin/Pengaturan/GantiPassword';
 import EditKamar from '../components/Dashboard/Admin/KelolaKamardanIklan/EditKamar';
-import TambahKamar from '../components/Dashboard/Admin/KelolaKamardanIklan/tambahKamar';
+import TambahKamar from '../components/Dashboard/Admin/KelolaKamardanIklan/TambahKamar';
+import GantiUsername from '../components/Dashboard/Admin/Pengaturan/GantiUsername';
 
 const PageDashboardAdmin = () => {
-  const [activePage, setActivePage] = useState('KosSaya');
+  const [activePage, setActivePage] = useState('DashboardSummary');
 
   const getPage = () => {
     if (typeof activePage === 'string') return activePage;
     if (typeof activePage === 'object' && activePage.page) return activePage.page;
-    return 'KosSaya';
+    return 'DashboardSummary';
   };
 
   const renderContent = () => {
@@ -29,6 +30,8 @@ const PageDashboardAdmin = () => {
       return <TambahKamar setActivePage={setActivePage} />;
     }
     switch(page) {
+      case 'DashboardSummary':
+        return <DashboardSummary setActivePage={setActivePage}/>;
       case 'KelolaPembayaran':
         return <KelolaPembayaran setActivePage={setActivePage}/>;
       case 'KelolaKamardanIklan':
@@ -41,10 +44,10 @@ const PageDashboardAdmin = () => {
         return <DetailPenghuni setActivePage={setActivePage}/>;
       case 'GantiPassword':
         return <GantiPassword setActivePage={setActivePage}/>;
-      case 'Dashboard':
-        return <KelolaPembayaran />;
+      case 'GantiUsername':
+        return <GantiUsername setActivePage={setActivePage}/>;
       default:
-        return <KelolaPembayaran />;
+        return <DashboardSummary setActivePage={setActivePage}/>;
     }
   };
 

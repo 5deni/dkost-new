@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import HeaderAdmin from '../components/Dashboard/Admin/HeaderAdmin';
 import SideMenu from '../components/Dashboard/Admin/SideMenu';
-import KelolaPembayaran from '../components/Dashboard/Admin/KelolaPembayaran';
+import DashboardSummary from '../Admin/DashboardSummary';
 // ...import lainnya
 
 const PageDashboardAdmin = () => {
-  const [activePage, setActivePage] = useState('KelolaPembayaran');
+  const [activePage, setActivePage] = useState('DashboardSummary');
 
   const renderContent = () => {
     switch (activePage) {
-      case 'KelolaPembayaran':
-        return <KelolaPembayaran setActivePage={setActivePage} />;
+      case 'DashboardSummary':
+        return <DashboardSummary setActivePage={setActivePage} />;
       // tambahkan yang lain sesuai kebutuhan
       default:
-        return <KelolaPembayaran setActivePage={setActivePage} />;
+        return <DashboardSummary setActivePage={setActivePage} />;
     }
   };
 

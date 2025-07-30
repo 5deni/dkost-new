@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { FaUser, FaHome, FaBed, FaUsers, FaCog } from 'react-icons/fa';
+import { getMe } from '../../../api/authApi';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardUser = () => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await getMe();
+        setUser(response.data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    fetchUser();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white font-jakarta">
 
@@ -9,9 +27,9 @@ const DashboardUser = () => {
         {/* Sidebar */}
         <aside className="w-64 bg-[#F9F9F9] border-r min-h-screen p-6">
           <div className="flex items-center gap-3 mb-8">
-            <FaUserCircle className="text-4xl text-[#444]" />
+            <FaUser className="text-4xl text-[#444]" />
             <div>
-              <p className="font-semibold text-sm">Umar Hatta</p>
+              <p className="font-semibold text-sm">{user?.name}</p>
               <p className="text-xs text-gray-500">Penyewa Kos</p>
             </div>
           </div>

@@ -66,7 +66,7 @@ const GantiPassword = ({ setActivePage }) => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:3001/api/admin/change-password', {
+      const response = await fetch('http://localhost:3001/api/user/change-password', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
